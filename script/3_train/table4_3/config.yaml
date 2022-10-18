@@ -1,0 +1,33 @@
+---
+name: table4_3
+model:
+    kwds:
+        input_format: "mag+relative_phase"
+        output_format: "mask+relative_phase"
+        ambisonic_format: "B"
+train:
+    indexes_dict_path: "index/ambisonic-binaural/train/main.pkl"
+    sample_rate: 48000
+    segment_seconds: 3.0
+    model_type: GRU
+    loss_type: l2_wav_l2_sp
+    optimizer_type: Adam
+    augmentations:
+        mixaudio:
+            ambisonic: 1
+            binaural: 1
+    learning_rate: 1e-3
+    batch_size: 16
+    precision: 32
+    steps_per_epoch: 10000  # Every 10000 steps is called an `epoch`.
+    evaluate_step_frequency: 10000     # Evaluate every #evaluate_step_frequency steps.
+    save_step_frequency: 10000  # Save every #save_step_frequency steps.
+    max_steps: 100001
+    warm_up_steps: 2000
+    reduce_lr_steps: 20000
+    random_seed: 1234
+    resume_checkpoint_path:
+
+evaluate:
+    batch_size: 16
+    segment_seconds: 3.0
