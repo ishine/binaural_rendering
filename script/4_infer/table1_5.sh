@@ -20,5 +20,4 @@ do
         --target_path="./resource/ambisonic-binaural/binaural/test_240s_to_260s.wav" \
         --config_yaml=$CONFIG_YAML \
         --checkpoint_path=$CHECKPOINT_PATH
-    # SDR: 8.0331, lsd: 0.7414
 done
